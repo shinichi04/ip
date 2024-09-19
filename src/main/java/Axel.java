@@ -27,7 +27,7 @@ public class Axel {
                 displayList(taskList);
             } else if (prompt.startsWith("mark")) {
                 try {
-                    String idxString = prompt.substring(5, 6);
+                    String idxString = prompt.substring(5);
                     Integer idxInt = Integer.parseInt(idxString);
                     taskList.get(idxInt - 1).mark();
                     System.out.println("Very nice! I have marked this task as done:\n"
@@ -39,15 +39,27 @@ public class Axel {
                 }
             } else if (prompt.startsWith("unmark")) {
                 try {
-                    String idxString = prompt.substring(5, 6);
+                    String idxString = prompt.substring(7);
                     Integer idxInt = Integer.parseInt(idxString);
-                    taskList.get(idxInt - 1).mark();
+                    taskList.get(idxInt - 1).unmark();
                     System.out.println("OK! I have marked this task as not done yet:\n"
                             + taskList.get(idxInt - 1).toString());
                 } catch (NumberFormatException e) {
                     System.out.println("Please input a valid number hehe");
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("Ooops! There is no task to be unmarked hehe");
+                }
+            } else if (prompt.startsWith("delete")) {
+                try {
+                    String idxString = prompt.substring(7);
+                    Integer idxInt = Integer.parseInt(idxString);
+                    Task task = taskList.remove(idxInt - 1);
+                    System.out.println("Alright! I have deleted this task:\n"
+                            + task.toString() + "\nNow you have " + taskList.size() + " tasks in the list");
+                } catch (NumberFormatException e) {
+                    System.out.println("Please input a valid number hehe");
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Ooops! There is no task to be deleted hehe");
                 }
             } else if (prompt.startsWith("todo")) {
                 try {
