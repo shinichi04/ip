@@ -12,6 +12,10 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + "(from:" + from + "to:" + to +  ")";
+        return "[E]" + super.toString() + " (from: " + from + " to: " + to +  ")";
+    }
+
+    public String saveFormat() {
+        return "E | " + getStatus() + " | " + this.taskName + " | " + this.from + " | " + this.to;
     }
 }
